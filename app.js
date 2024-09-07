@@ -3,18 +3,31 @@ const mongoose = require('mongoose')
 const prompt = require('prompt-sync')()
 
 // Connect to Database
-const connect= ( async () => {
+const connectToDB = async () => {
     await mongoose.connect(process.env.MONGODB_URI)
     console.log('Database running')
-})
+}
+const disconnectFromDB = async () => {
+    await mongoose.disconnect()
+    console.log('Database Disconnected')
+}
 // Queries
-// const runQueries = async () => {
-//     await createCustomer()
-//     console.log('runing queries')
-// }
+const runQueries = async (CRUD) => {
+    if (CRUD === 'create'){
+        return await createCustomer()
+    } else if(CRUD === 'update') {
+        return await updateCustomer()
+    } else if (CRUD === 'read') {
+        return await readCustomer()
+    }else if (CRUD === 'delete'){
+        return await deleteCustomer()
+    }
+    
+    console.log('runing queries')
+}
 
 // Connect to dabase
-connect()
+
 
 // require models 
 const Customer = require('./models/customer.js')
@@ -56,10 +69,19 @@ const databaseActions = () => {
     
     // if userChoice is 1 then, Define createCustomer query and send confirmation to user
     if(userChoice === 1){
+        
+        // define createCustomer function
         const name = prompt('Enter Customers name: ')
         const age = Number(prompt('Enter customers age: '))
-        // console.log(name, age)
         createCustomer(name, age)
+        // define runQueries
+
+        // call connect()
+
+        connectToDB()
+        // console.log(name, age)
+        disconnectFromDB()
+
     }
 
 
