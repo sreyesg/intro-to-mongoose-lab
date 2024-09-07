@@ -18,25 +18,26 @@ const runQueries = async () => {
 }
 
 
-connect()
+// connect()
 
 // require models 
-const Customer = require('/models/customer.js')
+const Customer = require('./models/customer.js')
 
 
 
 // application code
-prompt('Welcome to the CRM')
 
-prompt('What would you like to do?')
-const createCustomer = prompt('1. Create a customer')
-const indexCustomer = prompt('2. Create a customer')
-const updateCustomer = ('3. Create a customer')
-const deleteCustomer = ('1. Create a customer')
-const quit = ('1. Create a customer')
+const userChoice = prompt('Welcome to the CRM \n\n What would you like to do? \n\n 1. create a customer. \n 2.view all customers. \n 3.update a customer. \n 4.delete a customer. \n 5. quit')
 
 
+// define main function
+// const databaseActions = () => {
+//     if createCustomer === ''
+// }
 
-console.log(`your choose ${selection}`)
+
+
+
+// console.log(`your choose ${selection}`)
 
 
