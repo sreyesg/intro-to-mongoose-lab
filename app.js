@@ -27,7 +27,14 @@ const Customer = require('./models/customer.js')
 
 // application code
 
-const userChoice = prompt('Welcome to the CRM \n\n What would you like to do? \n\n 1. create a customer. \n 2.view all customers. \n 3.update a customer. \n 4.delete a customer. \n 5. quit')
+const userChoice = prompt('Welcome to the CRM \n\n' +
+    'What would you like to do?  \n\n'+
+    '1. create a customer. \n' + 
+    '2.view all customers. \n' + 
+    '3.update a customer. \n' + 
+    '4.delete a customer. \n' + 
+    '5. quit' + 
+    'number of action to run:')
 
 
 // define main function
@@ -35,9 +42,5 @@ const userChoice = prompt('Welcome to the CRM \n\n What would you like to do? \n
 //     if createCustomer === ''
 // }
 
-
-
-
-// console.log(`your choose ${selection}`)
 
 
