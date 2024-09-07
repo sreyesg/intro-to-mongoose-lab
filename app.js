@@ -48,15 +48,12 @@ const userMessage = 'What would you like to do?  \n\n'+
 '5. quit \n\n' + 
 'number of action to run:'
 
-const userChoice = prompt(userMessage)
+let userChoice = Number(prompt(userMessage))
 console.log('you picked: ', userChoice)
-
-
-
-
 
 // define main function
 const databaseActions = () => {
+    console.log('running databaseactions')
     // if userChoice is 1 then, 
     // Define createCustomer query
     // send confirmation to user
@@ -88,6 +85,6 @@ const databaseActions = () => {
 
 }
 
-// databaseActions()
+databaseActions()
 
 
