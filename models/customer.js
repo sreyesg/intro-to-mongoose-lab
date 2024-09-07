@@ -7,3 +7,6 @@ const customerSchema = new mongoose.Schema({
 })
 // model
 const Customer = mongoose.model('Customer', customerSchema)
+
+// export model
+module.exports = Customer
