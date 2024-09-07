@@ -13,7 +13,7 @@ const connect= ( async () => {
 })
 // Queries
 const runQueries = async () => {
-    // await createCustomer()
+    await createCustomer()
     console.log('runing queries')
 }
 
@@ -53,16 +53,16 @@ console.log('you picked: ', userChoice)
 
 // define main function
 const databaseActions = () => {
-    console.log('running databaseactions')
+    console.log('running databaseActions')
     // if userChoice is 1 then, 
     // Define createCustomer query
     // send confirmation to user
     if(userChoice === 1){
-        const name = prompt('Enter Customers name')
-        const age = prompt('Enter customers age')
-        console.log(name, age)
-        // createCustomer(name, age)
-        // connect()
+        const name = prompt('Enter Customers name: ')
+        const age = Number(prompt('Enter customers age: '))
+        // console.log(name, age)
+        createCustomer(name, age)
+        connect()
     }
 
 
