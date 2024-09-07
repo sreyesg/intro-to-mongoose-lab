@@ -13,7 +13,7 @@ const connect= ( async () => {
 })
 // Queries
 const runQueries = async () => {
-    
+    // await createCustomer()
     console.log('runing queries')
 }
 
@@ -23,18 +23,36 @@ const runQueries = async () => {
 // require models 
 const Customer = require('./models/customer.js')
 
+// declare queries
+
+const createCustomer = async (name, age) => {
+    const data = {
+        name: name,
+        age: age
+    }
+    const customer = await Customer.create(data)
+    console.log('Customer created: ', customer)
+    
+}
 
 
-// application code
 
-const userChoice = prompt('Welcome to the CRM \n\n' +
-    'What would you like to do?  \n\n'+
-    '1. create a customer. \n' + 
-    '2.view all customers. \n' + 
-    '3.update a customer. \n' + 
-    '4.delete a customer. \n' + 
-    '5. quit \n\n' + 
-    'number of action to run:')
+
+// APPLICATION CODE
+
+const userMessage = 'What would you like to do?  \n\n'+
+'1. create a customer. \n' + 
+'2.view all customers. \n' + 
+'3.update a customer. \n' + 
+'4.delete a customer. \n' + 
+'5. quit \n\n' + 
+'number of action to run:'
+
+const userChoice = prompt(userMessage)
+console.log('you picked: ', userChoice)
+
+
+
 
 
 // define main function
@@ -42,6 +60,15 @@ const databaseActions = () => {
     // if userChoice is 1 then, 
     // Define createCustomer query
     // send confirmation to user
+    if(userChoice === 1){
+        const name = prompt('Enter Customers name')
+        const age = prompt('Enter customers age')
+        console.log(name, age)
+        // createCustomer(name, age)
+        // connect()
+    }
+
+
 
     // if userChoice is 2 then, 
     // Define indexCustomer query
@@ -61,5 +88,6 @@ const databaseActions = () => {
 
 }
 
+// databaseActions()
 
 
