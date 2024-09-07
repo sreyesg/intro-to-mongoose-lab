@@ -2,29 +2,35 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const prompt = require('prompt-sync')()
 
+CRUD = 'create'
 // Connect to Database
 const connectToDB = async () => {
     await mongoose.connect(process.env.MONGODB_URI)
-    console.log('Database running')
-}
-const disconnectFromDB = async () => {
+    console.log('Database is running')
+    await runQueries()
     await mongoose.disconnect()
-    console.log('Database Disconnected')
+    console.log('Database is closed')
 }
+
 // Queries
-const runQueries = async (CRUD) => {
-    if (CRUD === 'create'){
-        return await createCustomer()
-    } else if(CRUD === 'update') {
-        return await updateCustomer()
-    } else if (CRUD === 'read') {
-        return await readCustomer()
-    }else if (CRUD === 'delete'){
-        return await deleteCustomer()
-    }
-    
-    console.log('runing queries')
-}
+let runQueries 
+// = async () => {
+//     // let query 
+//     if (CRUD === 'create'){
+//         console.log('running  create')
+//         // query = createCustomer()
+//     } 
+    // else if(CRUD === 'update') {
+    // //     return await updateCustomer()
+    // // } else if (CRUD === 'read') {
+    // //     return await readCustomer()
+    // // }else if (CRUD === 'delete'){
+    // //     return await deleteCustomer()
+    // }
+    // await createCustomer()
+    // console.log('this is the query object: ', query)
+    // console.log('runing queries')
+// }
 
 // Connect to dabase
 
@@ -33,16 +39,6 @@ const runQueries = async (CRUD) => {
 const Customer = require('./models/customer.js')
 
 // declare queries
-
-const createCustomer = async (name, age) => {
-    const data = {
-        name: name,
-        age: age
-    }
-    const customer = await Customer.create(data)
-    console.log('Customer created: ', customer)
-    
-}
 
 const indexCustomers = async () => {
 
@@ -72,15 +68,22 @@ const databaseActions = () => {
         
         // define createCustomer function
         const name = prompt('Enter Customers name: ')
-        const age = Number(prompt('Enter customers age: '))
-        createCustomer(name, age)
-        // define runQueries
-
-        // call connect()
-
+        const age = Number(prompt('Enter customers age: '))        
+        const createCustomer = async () => {
+            const data = {
+                name: name,
+                age: age
+            }
+            const customer = await Customer.create(data)
+            console.log('Customer created: ', customer)
+            
+        }
+        runQueries = async () => {
+            await createCustomer()
+        }
         connectToDB()
-        // console.log(name, age)
-        disconnectFromDB()
+        // // console.log(name, age)
+        // disconnectFromDB()
 
     }
 
