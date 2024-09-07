@@ -59,7 +59,8 @@ const userMessage = 'What would you like to do?  \n\n'+
 let userChoice = Number(prompt(userMessage))
 
 
-// define main function
+// define main function: DatabaseActiosn
+
 const databaseActions = () => {
     console.log('running databaseActions')
     
@@ -69,6 +70,8 @@ const databaseActions = () => {
         // define createCustomer function
         const name = prompt('Enter Customers name: ')
         const age = Number(prompt('Enter customers age: '))        
+        
+        // declare customer query 
         const createCustomer = async () => {
             const data = {
                 name: name,
@@ -78,13 +81,20 @@ const databaseActions = () => {
             console.log('Customer created: ', customer)
             
         }
+        
         runQueries = async () => {
             await createCustomer()
         }
         connectToDB()
-        // // console.log(name, age)
-        // disconnectFromDB()
+        
+    }else if (userChoice === 2){
 
+        const indexCustomers = async () => {
+            const index = await Customer.find({})
+            console.log(index)
+        }
+        runQueries = async ()=> {await indexCustomers()}
+        connectToDB()
     }
 
 
