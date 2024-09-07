@@ -5,20 +5,16 @@ const prompt = require('prompt-sync')()
 // Connect to Database
 const connect= ( async () => {
     await mongoose.connect(process.env.MONGODB_URI)
-    console.log('DB Connection openned')
-    await runQueries()
-    await mongoose.disconnect()
-    console.log('Connection closed')
-    
+    console.log('Database running')
 })
 // Queries
-const runQueries = async () => {
-    await createCustomer()
-    console.log('runing queries')
-}
+// const runQueries = async () => {
+//     await createCustomer()
+//     console.log('runing queries')
+// }
 
-
-// connect()
+// Connect to dabase
+connect()
 
 // require models 
 const Customer = require('./models/customer.js')
@@ -35,6 +31,9 @@ const createCustomer = async (name, age) => {
     
 }
 
+const indexCustomers = async () => {
+
+}
 
 
 
@@ -49,20 +48,18 @@ const userMessage = 'What would you like to do?  \n\n'+
 'number of action to run:'
 
 let userChoice = Number(prompt(userMessage))
-console.log('you picked: ', userChoice)
+
 
 // define main function
 const databaseActions = () => {
     console.log('running databaseActions')
-    // if userChoice is 1 then, 
-    // Define createCustomer query
-    // send confirmation to user
+    
+    // if userChoice is 1 then, Define createCustomer query and send confirmation to user
     if(userChoice === 1){
         const name = prompt('Enter Customers name: ')
         const age = Number(prompt('Enter customers age: '))
         // console.log(name, age)
         createCustomer(name, age)
-        connect()
     }
 
 
