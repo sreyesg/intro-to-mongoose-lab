@@ -33,14 +33,33 @@ const userChoice = prompt('Welcome to the CRM \n\n' +
     '2.view all customers. \n' + 
     '3.update a customer. \n' + 
     '4.delete a customer. \n' + 
-    '5. quit' + 
+    '5. quit \n\n' + 
     'number of action to run:')
 
 
 // define main function
-// const databaseActions = () => {
-//     if createCustomer === ''
-// }
+const databaseActions = () => {
+    // if userChoice is 1 then, 
+    // Define createCustomer query
+    // send confirmation to user
+
+    // if userChoice is 2 then, 
+    // Define indexCustomer query
+    // send index to user
+    
+    // if userChoice is 3 then, 
+    // Define updateCustomer query
+    // send confirmation to user
+
+    // if userChoice is 4 then,
+    // Define deleteCustomer query
+    // send confirmation to user
+
+    // if userChoice is 5 then,
+    // disconnect from database
+    // send confirmation to user
+
+}
 
 
 
