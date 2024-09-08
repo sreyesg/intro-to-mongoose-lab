@@ -95,9 +95,42 @@ const databaseActions = () => {
         }
         runQueries = async ()=> {await indexCustomers()}
         connectToDB()
+    } else if (userChoice === 3){
+        
+        // collect Customer DB index
+        const indexCustomers = async () => {
+            const index = await Customer.find({})
+            index.forEach((el) => {
+                console.log(`id: ${el.id} -- name: ${el.name}`)    
+            })
+        
+        }
+        
+        runQueries = async ()=> {await indexCustomers()}
+        
+        // declare Async UpdateFunction
+        const updateFunction = async () => { 
+         
+            await connectToDB()   
+
+            const id = prompt('copy and past the id of the customer you would like to update here: ')
+            const name = prompt('What is the customers new aname?')
+            const age = prompt('What is the customers new age?')
+
+            // Declare update query
+            const updateCustomer = async () => {
+                const updatedCustomer = Customer.findByIdAndUpdate(id,{name: name},{age: age},{new: true})
+                console.log(updateCustomer)
+            }
+            
+            runQueries = async ()=> {await updateCustomer()}
+            connectToDB()
+        }
+        // call asynchronous update function
+        updateFunction()
+    
     }
-
-
+}
 
     // if userChoice is 2 then, 
     // Define indexCustomer query
@@ -115,7 +148,6 @@ const databaseActions = () => {
     // disconnect from database
     // send confirmation to user
 
-}
 
 databaseActions()
 
