@@ -119,36 +119,18 @@ const databaseActions = () => {
 
             // Declare update query
             const updateCustomer = async () => {
-                const updatedCustomer = Customer.findByIdAndUpdate(id,{name: name},{age: age},{new: true})
-                console.log(updateCustomer)
+                const updatedCustomer = await Customer.findByIdAndUpdate(id,{name: name},{age: age},{new: true})
+                console.log(updatedCustomer)
             }
             
             runQueries = async ()=> {await updateCustomer()}
-            connectToDB()
+            await connectToDB()
         }
         // call asynchronous update function
         updateFunction()
     
     }
 }
-
-    // if userChoice is 2 then, 
-    // Define indexCustomer query
-    // send index to user
-    
-    // if userChoice is 3 then, 
-    // Define updateCustomer query
-    // send confirmation to user
-
-    // if userChoice is 4 then,
-    // Define deleteCustomer query
-    // send confirmation to user
-
-    // if userChoice is 5 then,
-    // disconnect from database
-    // send confirmation to user
-
-
 databaseActions()
 
 
